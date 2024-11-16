@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - Trafix App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      color: #f4f4f9;
+    }
+    .profile-container {
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      background: #444;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .section {
+      margin-top: 20px;
+    }
+    .section h3 {
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #333;
+    }
+    input {
+      background: #ddd;
+    }
+    button {
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .settings-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .settings-modal-content {
+      background: #555;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      color: #f4f4f9;
+    }
+    .settings-modal-content button {
+      width: auto;
+      margin: 5px;
+      background: #007bff;
+      color: white;
+    }
+    .settings-modal-content button:hover {
+      background: #0056b3;
+    }
+    .close-modal {
+      background: red;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <!-- Name and Contact Info -->
+    <div class="section">
+      <h3>Profile Information</h3>
+      <input type="text" id="userName" placeholder="Enter your name">
+      <input type="text" id="userContact" placeholder="Enter your contact number">
+      <input type="text" id="userAddress" placeholder="Enter your address">
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="section">
+      <h3>Recent Activities</h3>
+      <button onclick="logActivity('Completed Daily Log In')">Completed Daily Log In</button>
+      <button onclick="logActivity('Completed 5km Challenge')">Completed 5km Challenge</button>
+      <button onclick="logActivity('Travelled 1km')">Travelled 1km</button>
+    </div>
+
+    <!-- Settings -->
+    <div class="section">
+      <h3>Settings</h3>
+      <button onclick="openSettings()">Open Settings</button>
+    </div>
+
+    <!-- Log Out -->
+    <div class="section">
+      <button onclick="logOut()">Log Out</button>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="settings-modal" id="settingsModal">
+    <div class="settings-modal-content">
+      <h3>Settings</h3>
+      <button onclick="changePassword()">Change Password</button>
+      <button onclick="managePrivacy()">Manage Privacy</button>
+      <button onclick="notificationPreferences()">Notification Preferences</button>
+      <button onclick="deleteAccount()">Delete/Deactivate Account</button>
+      <button class="close-modal" onclick="closeSettings()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function logActivity(activity) {
+      alert(activity + " logged successfully!");
+    }
+
+    function openSettings() {
+      document.getElementById('settingsModal').style.display = 'flex';
+    }
+
+    function closeSettings() {
+      document.getElementById('settingsModal').style.display = 'none';
+    }
+
+    function logOut() {
+      alert("You have successfully logged out!");
+      // Redirect or clear session (to be implemented based on your system)
+    }
+
+    function changePassword() {
+      const newPassword = prompt("Enter your new password:");
+      if (newPassword) {
+        alert("Password updated successfully!");
+      } else {
+        alert("Password change canceled.");
+      }
+    }
+
+    function managePrivacy() {
+      alert("Privacy settings opened! Customize your privacy preferences here.");
+    }
+
+    function notificationPreferences() {
+      alert("Notification preferences updated!");
+    }
+
+    function deleteAccount() {
+      const confirmDelete = confirm("Are you sure you want to delete/deactivate your account?");
+      if (confirmDelete) {
+        alert("Your account has been deactivated!");
+        // Implement account deactivation logic
+      } else {
+        alert("Account deactivation canceled.");
+      }
+    }
+  </script>
+</body>
+</html>
